@@ -2,7 +2,7 @@
 
 set -ef
 
-if [ -n "$KEY_BUILD" ]; then
+if [ -z "$KEY_BUILD" ]; then
 	./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "Local build key"
   	export KEY_BUILD=$(cat ./key-build.pub)
 fi
