@@ -143,7 +143,7 @@ else
 fi
 
 mv bin/packages/*/packages_ci/* bin/targets/*/*/packages/ || true
-make package/index
+make package/index V="$V"
 
 if [ -d bin/ ]; then
 	mv bin/ /artifacts/
