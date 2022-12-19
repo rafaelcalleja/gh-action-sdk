@@ -2,6 +2,11 @@
 
 set -ef
 
+if [ -n "$KEY_BUILD" ]; then
+	./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "Local build key"
+  	export KEY_BUILD=$(cat ./key-build.pub)
+fi
+
 FEEDNAME="${FEEDNAME:-action}"
 BUILD_LOG="${BUILD_LOG:-1}"
 
@@ -136,6 +141,9 @@ else
 			}
 	done
 fi
+
+mv bin/packages/*/packages_ci/* bin/targets/*/*/packages/ || true
+make package/index
 
 if [ -d bin/ ]; then
 	mv bin/ /artifacts/
