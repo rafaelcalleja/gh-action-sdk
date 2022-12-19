@@ -141,9 +141,7 @@ else
 	done
 fi
 
-set -x
-find bin/ || true
-mv "bin/packages/*/${FEEDNAME}/*" "bin/targets/*/*/packages/" || true
+bash -c mv "bin/packages/*/${FEEDNAME}/* bin/targets/*/*/packages/ || true"
 make package/index V="$V"
 
 if [ -d bin/ ]; then
