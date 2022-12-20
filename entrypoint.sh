@@ -2,10 +2,6 @@
 
 set -ef
 
-if [ -z "$KEY_BUILD" ]; then
-	./staging_dir/host/bin/usign -G -s ./key-build -p ./key-build.pub -c "Local build key"
-fi
-
 FEEDNAME="${FEEDNAME:-action}"
 BUILD_LOG="${BUILD_LOG:-1}"
 
